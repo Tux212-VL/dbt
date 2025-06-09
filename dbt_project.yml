@@ -39,4 +39,4 @@ models:
   demo_dbt:
     # Applies to all files under models/example/
     example:
-      +materialized: table
+      +materialized: view
