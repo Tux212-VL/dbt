@@ -1,4 +1,4 @@
-with demographics as (
+ith demographics as (
   select * from {{ source('COVID19_Epidemiological_Data','DEMOGRAPHICS') }}
 ),
 
