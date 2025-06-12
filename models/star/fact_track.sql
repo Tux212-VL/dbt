@@ -14,9 +14,9 @@ SELECT
 FROM
     {{ source('EXAM_SNOWFLAKE', 'TRACK') }} t
 JOIN
-    {{ source('EXAM_SNOWFLAKE', 'ALBUM') }} alb ON
+    {{ source('EXAM_SNOWFLAKE', 'ALBUM') }} alb ON (t.ALBUMID = alb.ALBUMID)
 JOIN
-    {{ source('EXAM_SNOWFLAKE', 'PLAYLISTTRACK') }} plt ON
+    {{ source('EXAM_SNOWFLAKE', 'PLAYLISTTRACK') }} plt ON (t.TRACKID = plt.TRACKID)
 JOIN
-    {{ source('EXAM_SNOWFLAKE', 'PLAYLIST') }} pl ON
+    {{ source('EXAM_SNOWFLAKE', 'PLAYLIST') }} pl ON (plt.PLAYLISTID = pl.PLAYLISTID)
 
