@@ -4,6 +4,38 @@ models:
   - name: question1
     description: "Donnez les titres des albums qui ont plus de 1 CD."
     columns:
-      - name: ALBUM_TITLE
-        description: "Titre de l''album'."
+      - name: album_title
+        description: "album_title"
         data_type: VARCHAR
+
+
+  - name: question2
+    description: "Donnez les morceaux produits en 2000 ou en 2002."
+    columns:
+      - name: track_title
+        description: "track_title"
+        data_type: VARCHAR
+
+
+  - name: question3
+    description: "Donnez le nom et le compositeur des morceaux de Rock et de Jazz."
+    columns:
+      - name: track_title
+        description: "track_title"
+        data_type: VARCHAR
+
+
+  - name: question4
+    description: "Donnez les 10 albums les plus longs."
+    columns:
+      - name: album_id
+        description: "album_id"
+        data_type: number
+
+
+  - name: question5
+    description: "Donnez le nombre d'albums produits pour chaque artiste."
+    columns:
+      - name: album_id
+        description: "album_artist_name"
+        data_type: number

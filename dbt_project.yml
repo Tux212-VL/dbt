@@ -43,3 +43,5 @@ models:
         - tag_star
     views:
       +materialized: view
+      +tag:
+        - tag_view
