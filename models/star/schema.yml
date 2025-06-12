@@ -1,0 +1,39 @@
+version: 2
+
+sources:
+    - name: EXAM_SNOWFLAKE
+      description: 'Ceci est l''examen DBT.'
+      database: EXAM_SNOWFLAKE
+      schema: PUBLIC
+      tables:
+        - name: ALBUM
+          description: 'albums.'
+        - name: ARTIST
+          description: 'artistes.'
+        - name: GENRE
+          description: 'genres'
+        - name: MEDIATYPE
+          description: 'medias'
+        - name: PLAYLIST
+          description: 'playlists.'
+        - name: PLAYLISTTRACK
+          description: 'Les pistes constituants les playlists.'
+        - name: TRACK
+          description: 'Les pistes.'
+
+
+models:
+  - name: dim_mediatype
+    description: "Table Dimension des types de media"
+    columns:
+      - name: MEDIATYPE_ID
+        description: "Clef primaire de la table."
+        data_type: NUMBER
+        data_tests:
+          - unique
+          - not_null
+      - name: MEDIATYPE_NAME
+        description: 'Nom du type de media.'
+        data_type: VARCHAR
+        data_tests:
+          - not_null
