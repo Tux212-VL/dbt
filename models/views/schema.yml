@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: question1
+    description: "Donnez les titres des albums qui ont plus de 1 CD."
+    columns:
+      - name: album_title
+        description: "album_title"
+        data_type: VARCHAR
+
+
+  - name: question2
+    description: "Donnez les morceaux produits en 2000 ou en 2002."
+    columns:
+      - name: track_title
+        description: "track_title"
+        data_type: VARCHAR
+
+
+  - name: question3
+    description: "Donnez le nom et le compositeur des morceaux de Rock et de Jazz."
+    columns:
+      - name: track_title
+        description: "track_title"
+        data_type: VARCHAR
+
+
+  - name: question4
+    description: "Donnez les 10 albums les plus longs."
+    columns:
+      - name: album_id
+        description: "album_id"
+        data_type: number
+
+
+  - name: question5
+    description: "Donnez le nombre d'albums produits pour chaque artiste."
+    columns:
+      - name: album_artist_name
+        description: "album_artist_name"
+        data_type: VARCHAR
+
+
+  - name: question6
+    description: "Donnez le nombre de morceaux produits par chaque artiste."
+    columns:
+      - name: album_artist_name
+        description: "album_artist_name"
+        data_type: VARCHAR
+ 
+
+  - name: question7
+    description: "Donnez le genre de musique le plus écouté dans les années 2000."
+    columns:
+      - name: genre_name
+        description: "genre_name"
+        data_type: VARCHAR
+  
+
+  - name: question8
+    description: "Donnez les noms de toutes les playlists où figurent des morceaux de plus de 4 minutes."
+    columns:
+      - name: playlist_name
+        description: "playlist_name"
+        data_type: VARCHAR
+  
+
+  - name: question9
+    description: "Donnez les morceaux de Rock dont les artistes sont en France."
+    columns:
+      - name: track_title
+        description: "track_title"
+        data_type: VARCHAR
+
+
+  - name: question10
+    description: "Donnez la moyenne des tailles des morceaux par genre musical."
+    columns:
+      - name: genre_name
+        description: "genre_name"
+        data_type: VARCHAR
+
+
+  - name: question11
+    description: "Donnez les playlist où figurent des morceaux d'artistes nés avant 1990."
+    columns:
+      - name: playlist_name
+        description: "playlist_name"
+        data_type: VARCHAR

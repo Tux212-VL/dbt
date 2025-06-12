@@ -1,0 +1,200 @@
+version: 2
+
+sources:
+    - name: EXAM_SNOWFLAKE
+      description: 'Ceci est l''examen DBT.'
+      database: EXAM_SNOWFLAKE
+      schema: PUBLIC
+      tables:
+        - name: ALBUM
+          description: 'albums.'
+        - name: ARTIST
+          description: 'artistes.'
+        - name: GENRE
+          description: 'genres'
+        - name: MEDIATYPE
+          description: 'medias'
+        - name: PLAYLIST
+          description: 'playlists.'
+        - name: PLAYLISTTRACK
+          description: 'Les pistes constituants les playlists.'
+        - name: TRACK
+          description: 'Les pistes.'
+
+
+
+
+models:
+  - name: dim_mediatype
+    description: "Table Dimension des types de media"
+    columns:
+      - name: MEDIATYPE_ID
+        description: "Clef primaire de la table."
+        data_type: NUMBER
+        data_tests:
+          - unique
+          - not_null
+      - name: MEDIATYPE_NAME
+        description: 'Nom du type de media.'
+        data_type: VARCHAR
+        data_tests:
+          - not_null
+
+
+
+  - name: dim_genre
+    description: "Table Dimension des types des genres"
+    columns:
+      - name: GENRE_ID
+        description: "Clef primaire de la table."
+        data_type: NUMBER
+        data_tests:
+          - unique
+          - not_null
+      - name: GENRE_NAME
+        description: 'Nom du type de media.'
+        data_type: VARCHAR
+        data_tests:
+          - not_null
+
+
+
+  - name: dim_playlist
+    description: "Table Dimension des types playlist"
+    columns:
+      - name: PLAYLIST_ID
+        description: "Clef primaire de la table."
+        data_type: NUMBER
+        data_tests:
+          - unique
+          - not_null
+      - name: PLAYLIST_NAME
+        description: 'Nom du type de media.'
+        data_type: VARCHAR
+        data_tests:
+          - not_null
+
+
+
+  - name: dim_album
+    description: "Table Dimension des album"
+    columns:
+      - name: ALBUM_ID
+        description: "Clef primaire de la table."
+        data_type: NUMBER
+        data_tests:
+          - unique
+          - not_null
+      - name: ALBUM_TITLE
+        description: 'ALBUM_TITLE'
+        data_type: VARCHAR
+        data_tests:
+          - not_null
+      - name: ALBUM_PRODUCTIONYEAR
+        description: 'ALBUM_PRODUCTIONYEAR'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+      - name: ALBUM_CD_NUMBER
+        description: 'ALBUM_CD_NUMBER'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+      - name: ALBUM_ARTIST_NAME
+        description: 'ALBUM_ARTIST_NAME'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+      - name: ALBUM_ARTIST_BIRTHYEAR
+        description: 'ALBUM_ARTIST_BIRTHYEAR'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+      - name: ALBUM_ARTIST_COUNTRY
+        description: 'ALBUM_ARTIST_COUNTRY'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+
+
+  - name: fact_track
+    description: "Table Dimension des albums"
+    columns:
+      - name: TRACK_ID
+        description: 'Clef primaire de la table.'
+        data_type: NUMBER 
+        data_tests:
+          - not_null
+
+      - name: PLAYLIST_ID
+        description: 'Clef etrangere ID de la playlist contenant cette piste.'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('DIM_PLAYLIST') # Référence au modèle de dimension
+              field: PLAYLIST_ID # La colonne dans la dimension à laquelle elle doit correspondre
+
+      - name: ALBUM_ID
+        description: 'Clef etrangere ID de l''album.'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('DIM_ALBUM') # Référence au modèle de dimension
+              field: ALBUM_ID # La colonne dans la dimension à laquelle elle doit correspondre
+
+      - name: MEDIATYPE_ID
+        description: 'Clef etrangere ID du type de media.'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('DIM_MEDIATYPE') # Référence au modèle de dimension
+              field: MEDIATYPE_ID # La colonne dans la dimension à laquelle elle doit correspondre 
+
+      - name: GENRE_ID
+        description: 'Clef etrangere ID du genre d''album.'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('DIM_GENRE') # Référence au modèle de dimension
+              field: GENRE_ID # La colonne dans la dimension à laquelle elle doit correspondre
+
+      - name: MILLISECONDS
+        description: 'Duree de la piste'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+
+      - name: BYTES
+        description: 'Taille de la piste'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+
+      - name: UNITPRICE
+        description: 'Prix unitaire'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+
+      - name: COMPOSER
+        description: 'Nom des compositeurs.'
+        data_type: VARCHAR
+        data_tests:
+          - not_null
+
+      - name: TRACK_TITLE
+        description: 'Nom de la piste.'
+        data_type: VARCHAR
+        data_tests:
+          - not_null
+
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - TRACK_ID
+            - PLAYLIST_ID
+
