@@ -37,3 +37,85 @@ models:
         data_type: VARCHAR
         data_tests:
           - not_null
+
+  - name: dim_genre
+    description: "Table Dimension des types des genres"
+    columns:
+      - name: GENRE_ID
+        description: "Clef primaire de la table."
+        data_type: NUMBER
+        data_tests:
+          - unique
+          - not_null
+      - name: GENRE_NAME
+        description: 'Nom du type de media.'
+        data_type: VARCHAR
+        data_tests:
+          - not_null
+
+  - name: dim_playlist
+    description: "Table Dimension des types playlist"
+    columns:
+      - name: PLAYLIST_ID
+        description: "Clef primaire de la table."
+        data_type: NUMBER
+        data_tests:
+          - unique
+          - not_null
+      - name: PLAYLIST_NAME
+        description: 'Nom du type de media.'
+        data_type: VARCHAR
+        data_tests:
+          - not_null
+
+
+
+  - name: dim_album
+    description: "Table Dimension des album"
+    columns:
+      - name: ALBUM_ID
+        description: "Clef primaire de la table."
+        data_type: NUMBER
+        data_tests:
+          - unique
+          - not_null
+
+      - name: ALBUM_TITLE
+        description: 'ALBUM_TITLE'
+        data_type: VARCHAR
+        data_tests:
+          - not_null
+
+      - name: ALBUM_PRODUCTIONYEAR
+        description: 'ALBUM_PRODUCTIONYEAR'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+
+      - name: ALBUM_CD_NUMBER
+        description: 'ALBUM_CD_NUMBER'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+
+      - name: ALBUM_ARTIST_NAME
+        description: 'ALBUM_ARTIST_NAME'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+
+      - name: ALBUM_ARTIST_BIRTHYEAR
+        description: 'ALBUM_ARTIST_BIRTHYEAR'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+
+      - name: ALBUM_ARTIST_COUNTRY
+        description: 'ALBUM_ARTIST_COUNTRY'
+        data_type: NUMBER
+        data_tests:
+          - not_null
+
+
+
+
