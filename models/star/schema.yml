@@ -22,6 +22,8 @@ sources:
           description: 'Les pistes.'
 
 
+
+
 models:
   - name: dim_mediatype
     description: "Table Dimension des types de media"
@@ -38,6 +40,8 @@ models:
         data_tests:
           - not_null
 
+
+
   - name: dim_genre
     description: "Table Dimension des types des genres"
     columns:
@@ -52,6 +56,8 @@ models:
         data_type: VARCHAR
         data_tests:
           - not_null
+
+
 
   - name: dim_playlist
     description: "Table Dimension des types playlist"

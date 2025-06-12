@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: question1
+    description: "Donnez les titres des albums qui ont plus de 1 CD."
+    columns:
+      - name: ALBUM_TITLE
+        description: "Titre de l''album'."
+        data_type: VARCHAR
