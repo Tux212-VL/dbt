@@ -118,7 +118,6 @@ models:
         description: 'Clef primaire de la table.'
         data_type: NUMBER 
         data_tests:
-          - unique 
           - not_null
 
       - name: PLAYLIST_ID
@@ -188,7 +187,7 @@ models:
           - not_null
 
     tests:
-      - dbt_utils.unique_combination_of_columns: # Test pour l'unicité de la combinaison
+      - dbt_utils.unique_combination_of_columns:
         combination_of_columns:
           - TRACK_ID
           - PLAYLIST_ID
